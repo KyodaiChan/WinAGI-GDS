@@ -108,8 +108,12 @@ jobs:
     #  run: Remove-Item -path $env:Wap_Project_Directory\GitHubActionsWorkflow.pfx
 
     # Upload the MSIX package: https://github.com/marketplace/actions/upload-a-build-artifact
+    - name: List Windows Build Directory Contents
+      run: |
+        echo "--- Contents of ./build directory (recursive) on Windows ---"
+        Get-ChildItem -Path build -Recurse
     - name: Upload Windows Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: Bepis
-        path: D:\a\WinAGI-GDS\WinAGI-GDS\build\Release\*.*
+        name: Winagi
+        path: build/Debug/winagi.exe
